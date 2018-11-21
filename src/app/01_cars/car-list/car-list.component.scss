@@ -1,0 +1,71 @@
+
+:host {
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: -5px;
+    display: block;
+  }
+  :host {
+    .mat-sidenav {
+      width: 200px;
+    }
+    .mat-drawer-container {
+      overflow: visible;
+      .mat-sidenav {
+        overflow: visible;
+      }
+    }
+    .mat-drawer-content {
+      padding: 0;
+    }
+    .mat-text-primary text-xl{
+      text-align: center;
+    }
+    @media (min-width: 959px) {
+      .mat-drawer-side {
+        background-color: transparent;
+        box-shadow: none!important;
+      }
+    }
+    .mat-slider-horizontal {
+      width: 100%;
+      min-width: 1px;
+    }
+  }
+
+  @import "../../../assets/styles/scss/components/pricing";
+
+:host {
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -5px;
+  display: block;
+}
+
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+
+.mat-card-top {
+  margin-top: -($mat-toolbar-height-desktop);
+}
+
+@media ($mat-xsmall) and (orientation: portrait) {
+  .mat-card-top {
+    margin-top: -($mat-toolbar-height-mobile-portrait);
+  }
+}
+
+@media ($mat-small) and (orientation: landscape) {
+  .mat-card-top {
+    margin-top: -($mat-toolbar-height-mobile-landscape);
+  }
+}
+p {
+  font-family: Lato;
+}
+
+
+
+
+  

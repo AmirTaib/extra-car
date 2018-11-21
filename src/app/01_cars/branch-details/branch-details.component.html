@@ -1,0 +1,28 @@
+<div *ngIf="branch">
+  <mat-card>
+    <mat-card-content class="py-1">
+      <div class="mb-1">
+        <h1 class="mt-0">
+          <strong>{{branch.branchName}}</strong>
+        </h1>
+        <a href="javascript:;">{{branch.address}}</a>
+      </div>
+      <div fxLayout="row wrap">
+        <div fxFlex.gt-xs="50" fxFlex="100">
+          <div fxLayout="column">
+            <span>latitude : {{branch.latitude}}</span>
+            <span>longitude : {{branch.longitude}}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-content class="pl-0 pr-0 py-1">
+      <img src="../../../assets/images/branch-car.jpg" style="width: 100%;" />
+
+    </mat-card-content>
+
+
+
+  </mat-card>
+</div>

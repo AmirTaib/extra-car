@@ -1,0 +1,62 @@
+<div *ngIf="form">
+  <mat-card>
+    <mat-card-title>EDIT CAR :</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+
+        <div fxLayout="row wrap">
+
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="carNumber" formControlName="carNumber">
+            </mat-form-field>
+            <small *ngIf="form.controls['carNumber'].hasError('required') && form.controls['carNumber'].touched" class="mat-text-warn">You must include a Car Number.</small>
+            <small *ngIf="form.controls['carNumber'].hasError('minlength') && form.controls['carNumber'].touched" class="mat-text-warn">Your Car Number must be minimum 7 numbers.</small>
+            <small *ngIf="form.controls['carNumber'].hasError('maxlength') && form.controls['carNumber'].touched" class="mat-text-warn">Your Car Number must be 8 numbers maximum.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+            <div class="mb-1">
+              <app-autocomplete-filter-car-type formControlName="carTypeId">
+              </app-autocomplete-filter-car-type>
+            </div>
+          </div>
+
+        <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="kilometrage" formControlName="kilometrage">
+              </mat-form-field>
+              <small *ngIf="form.controls['kilometrage'].hasError('required') && form.controls['kilometrage'].touched" class="mat-text-warn">You must include a Kilometrage.</small>
+              <small *ngIf="form.controls['kilometrage'].hasError('min') && form.controls['kilometrage'].touched" class="mat-text-warn">Your kilometrage must be minimum 0 km.</small>
+              <small *ngIf="form.controls['kilometrage'].hasError('max') && form.controls['kilometrage'].touched" class="mat-text-warn">Your kilometrage must be 700000 km maximum.</small>
+            </div>
+          </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-checkbox matInput placeholder="isProperForRent" formControlName="isProperForRent">isProperForRent?</mat-checkbox>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+           <app-autocomplete-filter-branches formControlName="branchId">
+           </app-autocomplete-filter-branches>
+            <!-- <small *ngIf="form.controls['branche'].hasError('required') && form.controls['branche'].touched" class="mat-text-warn">You must include a first name.</small> -->
+          </div>
+        </div>
+       
+      </mat-card-content>
+      <hr>
+      <mat-card-actions class="px-1">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">ADD CAR</button>      
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+<pre>
+{{form?.value | json}}
+</pre>

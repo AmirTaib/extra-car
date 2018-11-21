@@ -1,0 +1,43 @@
+<div *ngIf="temp">
+    <mat-form-field style="width: 100%" class="mb-1">
+      <input matInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+    </mat-form-field>
+    <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true"
+      [scrollbarH]="true" [limit]="10" (activate)="itemClicked($event)" [rows]='temp'>
+      <ngx-datatable-column name="startDate" [width]="100" prop="startDate">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value | date: 'dd.MM.yyyy' }}
+        </ng-template>
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="endDate" [width]="100" prop="endDate">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value | date: 'dd.MM.yyyy' }}
+            </ng-template>
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="realEndDate" [width]="100" prop="realEndDate">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value | date: 'dd.MM.yyyy' }}
+        </ng-template>
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="userName" [width]="100" prop="userName">
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="carNumber" [width]="100" prop="carNumber">
+      </ngx-datatable-column>
+  
+      <ngx-datatable-column name="Action" prop="id" [sortable]="true">
+        <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+          <button class="btn btn-sm btn-danger" (click)="deleteOrder($event, id)">
+            <a class="fa fa-trash"></a> DELETE
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+ 
+  <pre>
+      {{ temp | json }}
+    </pre>

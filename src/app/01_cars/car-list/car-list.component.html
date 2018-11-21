@@ -1,0 +1,116 @@
+<div *ngIf="temp">
+
+  <mat-form-field style="width: 20%" class="mb-1">
+    <mat-select placeholder="Category" [(value)]="selected">
+      <mat-option value="Free Text">Free Text</mat-option>
+      <mat-option value="Gere">Gere</mat-option>
+      <mat-option value="Year">Year</mat-option>
+      <mat-option value="Manufacture Name">Manufacture Name</mat-option>
+      <mat-option value="Model">Model</mat-option>
+      
+
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field  class="example-full-width" style="margin-left: 30%">
+      <input matInput [min]="minStartDate" [matDatepicker]="picker1" placeholder="Choose a start date" [(ngModel)]="startRentDay">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+    <mat-form-field  class="example-full-width">
+      <input matInput [min]="minStartDate" [matDatepicker]="picker2" placeholder="Choose a end date" [(ngModel)]="endRentDay" (dateChange)='getFreeCarsByDays()'>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+  <br/>
+
+
+  <mat-form-field class="example-full-width" style="width: 20%" class="mb-1" *ngIf="selected=='Year'">
+    <mat-select placeholder="Manufacture Year" [(ngModel)]="selectedYear">
+      <mat-option *ngFor="let year of manufactureYearsToDrop" [value]="year" (click)='updateFilter($event)'>
+        {{year}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" style="width: 20%" class="mb-1" *ngIf="selected=='Manufacture Name'">
+    <mat-select placeholder="Manufacture Name" [(ngModel)]="selectedManufactureName">
+      <mat-option *ngFor="let name of manufactureNamesToDrop" [value]="name" (click)='updateFilter($event)'>
+        {{name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" style="width: 20%" class="mb-1" *ngIf="selected=='Model'">
+    <mat-select placeholder="Model" [(ngModel)]="selectedModel">
+      <mat-option *ngFor="let model of modelsToDrop" [value]="model" (click)='updateFilter($event)'>
+        {{model}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selected=='Free Text'" style="width: 20%" class="mb-1">
+    <input matInput placeholder="Type to filter the cars by free text..." required (keyup)='updateFilter($event)'>
+  </mat-form-field>
+
+  <mat-radio-group *ngIf="selected=='Gere'" style="width: 20%" class="mb-1" [(ngModel)]="isAuto" (change)='updateFilter()'>
+    <mat-radio-button value="true">Auto Gear</mat-radio-button>
+    <mat-radio-button value="false">Manual Gear</mat-radio-button>
+  </mat-radio-group>
+
+  
+<!--  
+ <pre>startRentDay: {{startRentDay | json}}</pre>
+ <pre>endRentDay: {{endRentDay | json}}</pre>
+  
+ <pre>numberOfDays: {{calculateDays() | json}}</pre>  -->
+
+
+  <mat-sidenav-container class="background-none shadow-none">
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="25" fxFlex.gt-xs="33.3333%" fxFlex="20" *ngFor="let car of temp">
+        <mat-card (click)="itemClicked(car)" class="pa-0" class="card card-5">
+          <div class="media-grid">
+            <figure>
+              <img src="assets/images/audi1.jpg">
+              <!--  <img src={{car.carImg}}>  -->
+              <figcaption>
+                <p>
+                  <a matTooltip="shopping_basket" matTooltipPosition="left">
+                    <mat-icon>shopping_basket</mat-icon>
+                  </a>
+
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <mat-card-content class="pa-1">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <div fxFlex>
+                <p class="ma-0">Name: {{ car.carType.manufacturerName }}</p>
+                <p class="ma-0">model: {{ car.carType.model }}</p>
+                <p class="ma-0 pa-0 text-md">Year: {{ car.carType.manufactureYear }}</p>
+                <p class="ma-0 pa-0 text-md" *ngIf="car.carType.isAutoGear">Gear: auto</p>
+                <p class="ma-0 pa-0 text-md" *ngIf="!car.carType.isAutoGear">Gear: manual</p>
+              </div>
+              <div class="mat-text-primary text-xl">
+                <p>{{car.branch.branchName}}</p>
+                <p>{{car.branch.address}}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-container>
+
+</div>
+
+
+<pre>
+    {{ temp | json }}
+  </pre>

@@ -1,0 +1,29 @@
+<mat-toolbar class="main-header" color="primary">
+  <button (click)="toggleSidenav.emit()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="branding">
+  </div>
+
+  <div class="search-bar" fxFlex>
+  </div>
+  
+  <button (click)="fullScreenToggle()" mat-icon-button>
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+  
+
+  <div *ngIf="currentUserName">
+    <button (click)="logout()" mat-icon-button class="ml-xs">  <!-- Logout -->
+      <mat-icon>person</mat-icon>
+    </button>
+    <span>{{currentUserName}}</span>
+  </div>
+
+  <div *ngIf="!currentUserName">
+     <button (click)="signup()" mat-icon-button class="ml-xs">  <!-- Register / Login -->
+      <mat-icon>person</mat-icon>
+    </button>
+    <span>Signup</span>
+  </div>
+</mat-toolbar>

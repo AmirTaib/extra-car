@@ -1,0 +1,58 @@
+<div *ngIf="form">
+  <mat-card>
+    <mat-card-title>EDIT BRANCH :</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+
+          <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="branchName" formControlName="branchName">
+              </mat-form-field>
+              <small *ngIf="form.controls['branchName'].hasError('required') && form.controls['branchName'].touched" class="mat-text-warn">You must include a Branch Name.</small>
+              <small *ngIf="form.controls['branchName'].hasError('minlength') && form.controls['branchName'].touched" class="mat-text-warn">Your Branch Name must be at least 2 characters long.</small>
+              <small *ngIf="form.controls['branchName'].hasError('maxlength') && form.controls['branchName'].touched" class="mat-text-warn">Your Branch Name cannot exceed 15 characters.</small>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="address" formControlName="address">
+              </mat-form-field>
+              <small *ngIf="form.controls['address'].hasError('required') && form.controls['address'].touched" class="mat-text-warn">You must include a Address.</small>
+              <small *ngIf="form.controls['address'].hasError('minlength') && form.controls['address'].touched" class="mat-text-warn">Your Address must be at least 2 characters long.</small>
+              <small *ngIf="form.controls['address'].hasError('maxlength') && form.controls['address'].touched" class="mat-text-warn">Your Address cannot exceed 20 characters.</small>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="latitude" formControlName="latitude">
+              </mat-form-field>
+              <small *ngIf="form.controls['latitude'].hasError('required') && form.controls['latitude'].touched" class="mat-text-warn">You must include a latitude.</small>
+              <small *ngIf="form.controls['latitude'].hasError('min') && form.controls['latitude'].touched" class="mat-text-warn">Your latitude must be between 100 and 999999999999.</small>
+              <small *ngIf="form.controls['latitude'].hasError('max') && form.controls['latitude'].touched" class="mat-text-warn">Your latitude must be between 100 and 999999999999.</small>
+            </div>
+          </div>
+
+          <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="longitude" formControlName="longitude">
+              </mat-form-field>
+              <small *ngIf="form.controls['longitude'].hasError('required') && form.controls['longitude'].touched" class="mat-text-warn">You must include a longitude.</small>
+              <small *ngIf="form.controls['longitude'].hasError('min') && form.controls['longitude'].touched" class="mat-text-warn">Your longitude must be between 100 and 999999999999.</small>
+              <small *ngIf="form.controls['longitude'].hasError('max') && form.controls['longitude'].touched" class="mat-text-warn">Your longitude must be between 100 and 999999999999.</small>
+            </div>
+          </div>
+
+      </mat-card-content>
+      <hr>
+      <mat-card-actions class="px-1">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">ADD BRANCH</button>      
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

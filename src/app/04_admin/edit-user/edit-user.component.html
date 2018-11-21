@@ -1,0 +1,97 @@
+
+<div *ngIf="form">
+  <mat-card>
+  <mat-card-title>Form validation</mat-card-title>
+  <mat-card-subtitle>Angular2 custom validation</mat-card-subtitle>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <div fxLayout="row wrap">
+        <div class="mb-1">
+          <mat-form-field style="width: 100%">
+            <input matInput placeholder="First name" [formControl]="form.controls['firstName']">
+          </mat-form-field>
+          <small *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched" class="mat-text-warn">You must include a first name.</small>
+          <small *ngIf="form.controls['firstName'].hasError('minlength') && form.controls['firstName'].touched" class="mat-text-warn">Your first name must be at least 2 characters long.</small>
+          <small *ngIf="form.controls['firstName'].hasError('maxlength') && form.controls['firstName'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+        </div>
+        <div class="mb-1">
+          <mat-form-field style="width: 100%">
+            <input matInput placeholder="Last name" [formControl]="form.controls['lastName']">
+          </mat-form-field>
+          <small *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched" class="mat-text-warn">You must include a Last name.</small>
+          <small *ngIf="form.controls['lastName'].hasError('minlength') && form.controls['lastName'].touched" class="mat-text-warn">Your Last name must be at least 2 characters long.</small>
+          <small *ngIf="form.controls['lastName'].hasError('maxlength') && form.controls['lastName'].touched" class="mat-text-warn">Your Last name cannot exceed 10 characters.</small>
+        </div>
+      </div>
+      <div class="mb-1">
+
+        <mat-form-field style="width: 100%">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Birth date" [formControl]="form.controls['birthDate']" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <small *ngIf="form.controls['birthDate'].hasError('required') && form.controls['birthDate'].touched" class="mat-text-warn">You must include a date.</small>
+        <!-- <small *ngIf="form.controls['birthDate'].errors?.date && form.controls['birthDate'].touched" class="mat-text-warn">You must include a valid date.</small> -->
+      </div>
+      <div class="mb-1">
+        <label>Gender</label>
+    	  <mat-radio-group [formControl]="form.controls['gender']">
+      	  <mat-radio-button value="male">Male</mat-radio-button>
+      	  <mat-radio-button value="female">Female</mat-radio-button>
+      	</mat-radio-group>
+        <small *ngIf="!form.controls['gender'].valid && form.controls['gender'].touched" class="mat-text-warn">You must select a gender.</small>
+      </div>
+      <div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Email address" [formControl]="form.controls['email']" type="email">
+        </mat-form-field>
+        <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="mat-text-warn">You must include an email address.</small>
+        <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="mat-text-warn">You must include a valid email address.</small>
+      </div>
+      <div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="userName" [formControl]="form.controls['userName']">
+        </mat-form-field>
+        <small *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched" class="mat-text-warn">You must include a first name.</small>
+        <small *ngIf="form.controls['userName'].hasError('minlength') && form.controls['userName'].touched" class="mat-text-warn">Your first name must be at least 2 characters long.</small>
+        <small *ngIf="form.controls['userName'].hasError('maxlength') && form.controls['userName'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+      </div>
+
+    	<div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Password" [formControl]="form.controls['password']" type="password">
+        </mat-form-field>
+    		<small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="mat-text-warn">You must include password.</small>
+      </div>
+
+      <!-- <div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" type="password">
+        </mat-form-field>
+    		<small *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched" class="mat-text-warn">You must include confirm password.</small>
+    		<small *ngIf="form.controls['confirmPassword'].errors?.equalTo" class="mat-text-warn">Passwords do not math.</small>
+      </div> -->
+      
+
+      <div class="mb-1">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="User Image" [formControl]="form.controls['userImage']">
+        </mat-form-field>
+        <small *ngIf="form.controls['userImage'].hasError('required') && form.controls['userImage'].touched" class="mat-text-warn">You must include a first name.</small>
+        <small *ngIf="form.controls['userImage'].hasError('minlength') && form.controls['userImage'].touched" class="mat-text-warn">Your first name must be at least 2 characters long.</small>
+        <small *ngIf="form.controls['userImage'].hasError('maxlength') && form.controls['userImage'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+      </div>
+
+     
+    </mat-card-content>
+    <hr>
+    <mat-card-actions class="px-1">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+</div>
+
+<pre>
+  {{form?.value | json}}
+  </pre>

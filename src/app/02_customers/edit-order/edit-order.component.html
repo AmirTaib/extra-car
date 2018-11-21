@@ -1,0 +1,72 @@
+<div *ngIf="form">
+  <mat-card>
+    <mat-card-title>Hi {{userNameToOrder}}!</mat-card-title>
+    <mat-card-subtitle>Thank you for choosing us!</mat-card-subtitle>  
+    <mat-card-subtitle>Please confirm your order details</mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div fxLayout="row wrap">
+
+
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput [min]="minStartDate" [matDatepicker]="picker" placeholder="startDate" [formControl]="form.controls['startDate']">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <small *ngIf="form.controls['startDate'].hasError('required') && form.controls['startDate'].touched" class="mat-text-warn">You must include a date.</small>
+            <small *ngIf="form.controls['startDate'].errors?.date && form.controls['startDate'].touched" class="mat-text-warn">You must include a valid date.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput [min]="minStartDate" [matDatepicker]="picker1" placeholder="endDate" [formControl]="form.controls['endDate']">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <small *ngIf="form.controls['endDate'].hasError('required') && form.controls['endDate'].touched" class="mat-text-warn">You must include a date.</small>
+            <small *ngIf="form.controls['endDate'].errors?.date && form.controls['endDate'].touched" class="mat-text-warn">You must include a valid date.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="User Name" formControlName="userNameToOrder">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="Total Price" formControlName="totalPrice">
+              </mat-form-field>
+            </div>
+          </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Car model" formControlName="modelToOrder">
+            </mat-form-field>
+          </div>
+        </div>
+
+       
+
+      </mat-card-content>
+      <hr>
+      <mat-card-actions class="px-1">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+<pre>
+  {{form?.value | json}}
+  </pre>

@@ -1,0 +1,26 @@
+<div *ngIf="branches">
+  
+  
+  <div fxlayoutgap="20px grid" fxLayoutAlign="center start" class="mat-card-top">
+      <div fxLayout="row wrap" >
+        <div fxflex="25" *ngFor="let branch of branches">
+          <mat-card class="pricing-plan">
+            <mat-card-title>extra car(e)</mat-card-title>
+            <mat-card-subtitle class="mat-text-primary">Come to visit us in:</mat-card-subtitle>
+            <mat-card-content>
+              <h1><strong class="plan-price">{{branch.branchName}}</strong></h1>
+              <mat-list dense>
+                <mat-list-item>{{branch.address}}</mat-list-item>
+                <mat-list-item>300 luxury cars await you at the branch</mat-list-item>
+                <mat-list-item class="plan-feature-inactive mat-text-muted">24/7 Customer Support</mat-list-item>
+                <mat-list-item class="plan-feature-inactive mat-text-muted">Can be ordered for today</mat-list-item>
+              </mat-list>
+            </mat-card-content>
+            <mat-card-actions class="pb-1">
+              <button mat-raised-button color="accent" (click)="showDetails(branch.branchId)">Choose Branch</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+  </div>
+</div>

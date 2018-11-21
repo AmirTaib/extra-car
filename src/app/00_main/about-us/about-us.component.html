@@ -1,0 +1,86 @@
+<mat-card class="pa-0">
+  <div fxLayout="row wrap" fxLayoutAlign=" stretch" class="mb-1">
+    <div fxFlex.gt-md="40" fxFlex.gt-sm="50" fxFlex="100">
+      <div class="card-image-header product-image-header">
+        <img src="../../../assets/images/home3.jpg" />
+      </div>
+    </div>
+    <div fxFlex.gt-md="60" fxFlex.gt-sm="50" fxFlex="100" class="pa-1">
+      <div class="product-detail-header">
+        <h1 class="ma-0 pa-0">
+          <strong>EXTRA CAR(E)</strong>
+        </h1>
+        <br/>
+        <br/>
+
+        <h4 class="mat-text-muted ma-0 pa-0">ALL IS FOR YOU</h4>
+        <br/>
+        <br/>
+
+      </div>
+
+      <div class="description">
+        <p>Hiring a car just got easier with the reliable service of EXTRA CAR(E)! Having covered all the 50 states in America,
+          we offer the finest choice of vehicles ranging from economy to luxury. We have tied up with renowned car rental
+          brands so that we can provide our customers with the most economic car rental deals along with world class customer
+          service. We pre-negotiate car rental deals with suppliers so that we can provide you with heavily discounted car
+          hire rates.</p>
+        <p>Inclusions and Waivers</p>
+        <p>All our deals are loaded with unlimited covers and inclusions such as theft waiver, collision damage waiver, roadside
+          assistance, insurance, unlimited kilometers and other taxes, so that you can enjoy a tension free holiday!</p>
+        <p>Easy Booking</p>
+        <p>Book a car in just 3 easy and simple steps namely Search –Select –Book by simply entering the destination, time and
+          date of travel to receive an almost instantaneously confirmation of your booking. Our user friendly booking portal
+          with a multicurrency option makes renting a car extremely easy and quick.</p>
+        <p>24/7 Customer Support</p>
+        <p>Our multi lingual customer care team is available 24/7 to help you with all the reservation related queries. We make
+          sure that our amicable customer support team helps you with all your reservation related queries in the shortest
+          possible time.</p>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group [selectedIndex]="2">
+    <mat-tab>
+      <ng-template matTabLabel>Description</ng-template>
+      <mat-card-content class="pa-1">
+        <p>
+          <strong>EXTRA CAR(E)</strong>
+        </p>
+        <p>Hiring a car just got easier with the reliable service of EXTRA CAR(E)! Having covered all the 50 states in America,
+            we offer the finest choice of vehicles ranging from economy to luxury. We have tied up with renowned car rental
+            brands so that we can provide our customers with the most economic car rental deals along with world class customer
+            service. We pre-negotiate car rental deals with suppliers so that we can provide you with heavily discounted car
+            hire rates.</p>
+      </mat-card-content>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>Specifications</ng-template>
+      <mat-card-content class="pa-1">
+        <div fxLayout="column" layout-align="center">
+          <div fxLayout="row" class="py-1">
+            <span class="mat-text-muted">Try and discover:&nbsp;</span>
+            <span>A range of luxury cars</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-tab>
+    <mat-tab>
+      <ng-template matTabLabel>Customer Reviews</ng-template>
+      <mat-list>
+        <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
+          <mat-list-item>
+            <img mat-list-avatar src="{{item.photo}}" alt="">
+            <h3 matLine> {{item.from}} </h3>
+            <div matLine>
+              <span fxLayout="row">
+                <span *ngFor="let star of stars" [class.mat-text-default]="star <= item.rating" class="mat-text-muted">&#9733;</span>
+              </span>
+            </div>
+            <p matLine> {{item.subject}} - {{item.message}} </p>
+          </mat-list-item>
+        </ng-template>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

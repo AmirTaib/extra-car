@@ -1,0 +1,11 @@
+<mat-form-field class="example-full-width">
+  <input type="text" 
+  [(ngModel)]="selectedCarTypeId"
+  placeholder="Select car type" aria-label="Number" matInput 
+   [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="display()" (optionSelected)="itemSelected($event)">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+      {{option.text}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

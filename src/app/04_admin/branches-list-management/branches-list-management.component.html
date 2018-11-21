@@ -1,0 +1,59 @@
+
+  <div *ngIf="temp">
+    <mat-form-field style="width: 100%" class="mb-1">
+    <input matInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+  </mat-form-field>
+  <ngx-datatable
+  class='material'
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="50"
+  [scrollbarV]="true"
+  [scrollbarH]="true"
+  [limit]="10"
+  (activate)="itemClicked($event)"
+  [rows]='temp'>
+  
+    <ngx-datatable-column
+      name="address"
+      [width]="100"
+      prop="address"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="latitude"
+      [width]="100"
+      prop="latitude"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="longitude"
+      [width]="100"
+      prop="longitude"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="branchName"
+      [width]="100"
+      prop="branchName"
+      >
+    </ngx-datatable-column>
+    
+    <ngx-datatable-column name="Action" prop="id" [sortable]="true">
+      <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+        <button class="btn btn-sm btn-danger"
+         (click)="deleteBranch($event, id)">
+          <a class="fa fa-trash"></a> DELETE
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+  </div>
+  
+  <div>
+      <button mat-raised-button color="primary" (click)="addNewBranch()">ADD NEW BRANCH</button> 
+    </div>

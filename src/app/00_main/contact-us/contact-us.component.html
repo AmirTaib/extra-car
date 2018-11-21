@@ -1,0 +1,67 @@
+
+<div *ngIf="form">
+    <mat-card>
+    <mat-card-title>Your opinion is important to us!</mat-card-title>
+    <mat-card-subtitle>Please fill in the details and contact us</mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="First name" [formControl]="form.controls['firstName']">
+            </mat-form-field>
+            <small *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['firstName'].hasError('minlength') && form.controls['firstName'].touched" class="mat-text-warn">Your first name must be at least 2 characters long.</small>
+            <small *ngIf="form.controls['firstName'].hasError('maxlength') && form.controls['firstName'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Last name" [formControl]="form.controls['lastName']">
+            </mat-form-field>
+            <small *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched" class="mat-text-warn">You must include a last name.</small>
+            <small *ngIf="form.controls['lastName'].hasError('minlength') && form.controls['lastName'].touched" class="mat-text-warn">Your last name must be at least 2 characters long.</small>
+            <small *ngIf="form.controls['lastName'].hasError('maxlength') && form.controls['lastName'].touched" class="mat-text-warn">Your last name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+      
+        
+        <div class="mb-1">
+          <mat-form-field style="width: 100%">
+            <input matInput placeholder="Email address" [formControl]="form.controls['email']" type="email">
+          </mat-form-field>
+          <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="mat-text-warn">You must include an email address.</small>
+          <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="mat-text-warn">You must include a valid email address.</small>
+        </div>
+      
+  
+    
+        <div class="mb-1">
+          <mat-form-field style="width: 100%">
+            <input matInput placeholder="IL Phone number (+972-xx-xxxxxxx)" [formControl]="form.controls['phone']" type="text">
+          </mat-form-field>
+          <small *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched" class="mat-text-warn">You must include phone number.</small>
+          <small *ngIf="form.controls['phone'].errors?.phone && form.controls['phone'].touched" class="mat-text-warn">You must include a valid phone number.</small>
+        </div> 
+
+        <div class="mb-1">
+          <mat-form-field style="width: 100%">
+            <input matInput placeholder="Enter your msg" [formControl]="form.controls['msg']">
+          </mat-form-field>
+          <small *ngIf="form.controls['msg'].hasError('required') && form.controls['msg'].touched" class="mat-text-warn">You must include a msg.</small>
+          <small *ngIf="form.controls['msg'].hasError('minlength') && form.controls['msg'].touched" class="mat-text-warn">Your msg must be at least 4 characters long.</small>
+        </div>
+
+        
+  
+       
+  
+       
+      </mat-card-content>
+      <hr>
+      <mat-card-actions class="px-1">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  </div>
+  

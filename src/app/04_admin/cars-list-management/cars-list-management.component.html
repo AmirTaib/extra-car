@@ -1,0 +1,51 @@
+<div *ngIf="temp">
+  <mat-form-field style="width: 100%" class="mb-1">
+    <input matInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+  </mat-form-field>
+  <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true"
+    [scrollbarH]="true" [limit]="10" (activate)="itemClicked($event)" [rows]='temp'>
+
+    <ngx-datatable-column name="Car Number" [width]="100" prop="carNumber">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Manufacturer Name" [width]="100" prop="carType.manufacturerName">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Model" [width]="100" prop="carType.model">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Daily Cost" [width]="100" prop="carType.dailyCost">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Cost Of Day Overdue" [width]="100" prop="carType.costOfDayOverdue">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Manufacture Year" [width]="100" prop="carType.manufactureYear">
+      {{value | date:'dd/MM/yyyy'}}
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Is Auto Gear" [width]="100" prop="carType.isAutoGear">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Kilometrage" [width]="100" prop="kilometrage">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Is Proper For Rent" [width]="100" prop="isProperForRent">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Branch Name" [width]="100" prop="branch.branchName">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Action" prop="id" [sortable]="true">
+      <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+        <button class="btn btn-sm btn-danger" (click)="deleteCar($event, id)">
+          <a class="fa fa-trash"></a> DELETE
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>
+
+<div>
+  <button mat-raised-button color="primary" (click)="addNewCar()">ADD NEW CAR</button>
+</div>

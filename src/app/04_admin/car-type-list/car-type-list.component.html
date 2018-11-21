@@ -1,0 +1,73 @@
+<div *ngIf="temp">
+    <mat-form-field style="width: 100%" class="mb-1">
+    <input matInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+  </mat-form-field>
+  <ngx-datatable
+  class='material'
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="50"
+  [scrollbarV]="true"
+  [scrollbarH]="true"
+  [limit]="10"
+  (activate)="itemClicked($event)"
+  [rows]='temp'>
+  
+    <ngx-datatable-column
+      name="manufacturerName"
+      [width]="100"
+      prop="manufacturerName"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="Model"
+      [width]="100"
+      prop="model"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="Daily Cost"
+      [width]="100"
+      prop="dailyCost"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="Cost Of Day Overdue"
+      [width]="100"
+      prop="costOfDayOverdue"
+      >
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="Manufacture Year"
+      [width]="100"
+      prop="manufactureYear"
+      >
+      {{value | date:'dd/MM/yyyy'}}
+    </ngx-datatable-column>
+  
+    <ngx-datatable-column
+      name="Is Auto Gear"
+      [width]="100"
+      prop="isAutoGear"
+      >
+    </ngx-datatable-column>
+    
+    <ngx-datatable-column name="Action" prop="id" [sortable]="true">
+      <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+        <button class="btn btn-sm btn-danger"
+         (click)="deleteCar($event, id)">
+          <a class="fa fa-trash"></a> DELETE
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+  </div>
+  
+  <div>
+      <button mat-raised-button color="primary" (click)="addNewCar()">ADD NEW CAR</button> 
+    </div>

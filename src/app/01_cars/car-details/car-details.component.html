@@ -1,0 +1,150 @@
+<div *ngIf="form">
+  <mat-card>
+    <div>
+      <mat-card-title *ngIf="tournament.tournamentName; else content">EDIT TOURNAMET {{tournament?.tournamentName.toUpperCase()}}</mat-card-title>
+      <ng-template #content>NEW TOURNAMET</ng-template>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="manufacturerName" formControlName="manufacturerName">
+            </mat-form-field>
+            <small *ngIf="form.controls['manufacturerName'].hasError('required') && form.controls['manufacturerName'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['manufacturerName'].hasError('minlength') && form.controls['manufacturerName'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['manufacturerName'].hasError('maxlength') && form.controls['manufacturerName'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="model" formControlName="model">
+            </mat-form-field>
+            <small *ngIf="form.controls['model'].hasError('required') && form.controls['model'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['model'].hasError('minlength') && form.controls['model'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['model'].hasError('maxlength') && form.controls['model'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="dailyCost" formControlName="dailyCost">
+            </mat-form-field>
+            <small *ngIf="form.controls['dailyCost'].hasError('required') && form.controls['dailyCost'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['dailyCost'].hasError('minlength') && form.controls['dailyCost'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['dailyCost'].hasError('maxlength') && form.controls['dailyCost'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput [matDatepicker]="picker" placeholder="manufactureYear" formControlName="manufactureYear">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <small *ngIf="form.controls['manufactureYear'].hasError('required') && form.controls['manufactureYear'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['manufactureYear'].hasError('minlength') && form.controls['manufactureYear'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['manufactureYear'].hasError('maxlength') && form.controls['manufactureYear'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+        
+        <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-checkbox matInput placeholder="isautoGere" formControlName="isautoGere">Is Active?</mat-checkbox>
+            </div>
+          </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="kilometrage" formControlName="kilometrage">
+            </mat-form-field>
+            <small *ngIf="form.controls['kilometrage'].hasError('required') && form.controls['kilometrage'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['kilometrage'].hasError('minlength') && form.controls['kilometrage'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['kilometrage'].hasError('maxlength') && form.controls['kilometrage'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="imgCar" formControlName="imgCar">
+            </mat-form-field>
+            <small *ngIf="form.controls['imgCar'].hasError('required') && form.controls['imgCar'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['imgCar'].hasError('minlength') && form.controls['imgCar'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['imgCar'].hasError('maxlength') && form.controls['imgCar'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-checkbox matInput placeholder="isProperForRent" formControlName="isProperForRent">Is Active?</mat-checkbox>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-checkbox matInput placeholder="isAvailableForRent" formControlName="isAvailableForRent">Is Active?</mat-checkbox>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="address" formControlName="address">
+            </mat-form-field>
+            <small *ngIf="form.controls['address'].hasError('required') && form.controls['address'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['address'].hasError('minlength') && form.controls['address'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['address'].hasError('maxlength') && form.controls['address'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="latitude" formControlName="latitude">
+            </mat-form-field>
+            <small *ngIf="form.controls['latitude'].hasError('required') && form.controls['latitude'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['latitude'].hasError('minlength') && form.controls['latitude'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['latitude'].hasError('maxlength') && form.controls['latitude'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+
+        <div fxLayout="row wrap">
+            <div class="mb-1">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="longitude" formControlName="longitude">
+              </mat-form-field>
+              <small *ngIf="form.controls['longitude'].hasError('required') && form.controls['longitude'].touched" class="mat-text-warn">You must include a first name.</small>
+              <small *ngIf="form.controls['longitude'].hasError('minlength') && form.controls['longitude'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+              <small *ngIf="form.controls['longitude'].hasError('maxlength') && form.controls['longitude'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+            </div>
+          </div>
+
+        <div fxLayout="row wrap">
+          <div class="mb-1">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="branchName" formControlName="branchName">
+            </mat-form-field>
+            <small *ngIf="form.controls['branchName'].hasError('required') && form.controls['branchName'].touched" class="mat-text-warn">You must include a first name.</small>
+            <small *ngIf="form.controls['branchName'].hasError('minlength') && form.controls['branchName'].touched" class="mat-text-warn">Your first name must be at least 5 characters long.</small>
+            <small *ngIf="form.controls['branchName'].hasError('maxlength') && form.controls['branchName'].touched" class="mat-text-warn">Your first name cannot exceed 10 characters.</small>
+          </div>
+        </div>
+
+       
+      </mat-card-content>
+      <hr>
+      <mat-card-actions class="px-1">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,50 @@
+<div *ngIf="temp">
+  <mat-form-field style="width: 100%" class="mb-1">
+    <input matInput placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)'>
+  </mat-form-field>
+  <ngx-datatable class='material' [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50"
+    [scrollbarV]="true" [scrollbarH]="true" [limit]="10" (activate)="itemClicked($event)" [rows]='temp'>
+
+    <ngx-datatable-column name="firstName" [width]="100" prop="firstName">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="lastName" [width]="100" prop="lastName">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="birthDate" [width]="100" prop="birthDate">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{value | date: 'dd.MM.yyyy' }}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="gender" [width]="100" prop="gender">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="email" [width]="100" prop="email">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="userName" [width]="100" prop="userName">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="password" [width]="100" prop="password">
+    </ngx-datatable-column>
+
+    <!-- <ngx-datatable-column name="confirmPassword" [width]="100" prop="confirmPassword">
+    </ngx-datatable-column> -->
+
+    <ngx-datatable-column name="userImage" [width]="100" prop="userImage">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Action" prop="id" [sortable]="true">
+      <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+        <button class="btn btn-sm btn-danger" (click)="deleteUser($event, id)">
+          <a class="fa fa-trash"></a> DELETE
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>
+
+<div>
+  <button mat-raised-button color="primary" (click)="addNewUser()">ADD NEW User</button>
+</div>
