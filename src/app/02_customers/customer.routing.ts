@@ -12,27 +12,34 @@ export const CustomerRoutes: Routes = [{
     path: '',
     children: [{
         path: 'edit-customer',
+        canActivate: [AuthGuardService],
         component: EditCustomerComponent
     },
     {
         path: 'add-customer',
+        canActivate: [AuthGuardService],
         component: EditCustomerComponent
     }, {
         path: 'edit-order/:id',
+        canActivate: [AuthGuardService],
         component: EditOrderComponent
     },
     {
         path: 'add-order',
+        canActivate: [AuthGuardService],
         component: EditOrderComponent
     }, {
         path: 'car-rental/:id',
+        canActivate: [AuthGuardService],
         component: CarRentalComponent
     }, {
         path: 'order-list-by-customer',
+        canActivate: [AuthGuardService],
         component: OrderListByCustomerComponent
     },
     {
         path: 'personal-area',
+        canActivate: [AuthGuardService],
         component: PersonalAreaComponent
     }
     ]

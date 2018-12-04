@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   public form: FormGroup;
   constructor(private fb: FormBuilder,
     private router: Router,
-    private auteService: AuthGuardService,
+    private authService: AuthGuardService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auteService.isLogin(this.form.value).then((result) => {
+    this.authService.isLogin(this.form.value).then((result) => {
       if (!result) {
         this.isValidLogin = false;
       } else {

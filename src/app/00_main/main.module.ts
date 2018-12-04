@@ -59,7 +59,7 @@ import { UICarouselModule } from 'ui-carousel';
     MatTabsModule,
     MatDialogModule,
     MatExpansionModule,
-    CalendarModule.forRoot(),
+    //CalendarModule.forRoot(),
     FlexLayoutModule,
     ChartsModule,
     PerfectScrollbarModule,

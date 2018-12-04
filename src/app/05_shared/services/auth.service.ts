@@ -36,6 +36,7 @@ export class AuthService implements CanActivate {
   }
 
   constructor(private router: Router) {
+    // debugger;
     this.role = 'admin';
 
   }

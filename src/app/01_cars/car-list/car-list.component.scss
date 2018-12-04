@@ -1,44 +1,46 @@
 
-:host {
-    margin-left: -5px;
-    margin-right: -5px;
-    margin-top: -5px;
-    display: block;
-  }
-  :host {
-    .mat-sidenav {
-      width: 200px;
-    }
-    .mat-drawer-container {
-      overflow: visible;
-      .mat-sidenav {
-        overflow: visible;
-      }
-    }
-    .mat-drawer-content {
-      padding: 0;
-    }
-    .mat-text-primary text-xl{
-      text-align: center;
-    }
-    @media (min-width: 959px) {
-      .mat-drawer-side {
-        background-color: transparent;
-        box-shadow: none!important;
-      }
-    }
-    .mat-slider-horizontal {
-      width: 100%;
-      min-width: 1px;
-    }
-  }
+// :host {
+//     margin-left: -5px;
+//     margin-right: -5px;
+//     margin-top: -5px;
+//     display: block;
+//   }
+//   :host {
+//     .mat-sidenav {
+//       width: 200px;
+//     }
+//     .mat-drawer-container {
+//       overflow: visible;
+//       .mat-sidenav {
+//         overflow: visible;
+//       }
+//     }
+//     .mat-drawer-content {
+//       padding: 0;
+//     }
+//     .mat-text-primary text-xl{
+//       text-align: center;
+//     }
+//     @media (min-width: 959px) {
+//       .mat-drawer-side {
+//         background-color: transparent;
+//         box-shadow: none!important;
+//       }
+//     }
+//     .mat-slider-horizontal {
+//       width: 100%;
+//       min-width: 1px;
+//     }
+//   }
 
   @import "../../../assets/styles/scss/components/pricing";
-
+    @import '~saturn-datepicker/theming';
+    @include sat-datepicker-theme($theme);
+    
 :host {
-  margin-left: -5px;
-  margin-right: -5px;
-  margin-top: -5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
   display: block;
 }
 

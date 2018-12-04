@@ -9,6 +9,7 @@ import { EditCarTypeComponent } from './edit-car-type/edit-car-type.component';
 import { CarTypeListComponent } from './car-type-list/car-type-list.component';
 import { BranchesListManagementComponent } from './branches-list-management/branches-list-management.component';
 import { EditBranchComponent } from './edit-branch/edit-branch.component';
+import { AuthGuardService } from '../05_shared/services/authGuard.service';
 
 
 
@@ -17,58 +18,72 @@ export const AdminRoutes: Routes = [{
   children: [
     {
       path: 'edit-admin',
+      canActivate: [AuthGuardService],
       component: EditAdminComponent
     },
     {
       path: 'edit-car/:id',
+      canActivate: [AuthGuardService],
       component: EditCarComponent
     },
     {
       path: 'add-car',
+      canActivate: [AuthGuardService],
       component: EditCarComponent
     },
     {
       path: 'edit-car-type/:id',
+      canActivate: [AuthGuardService],
       component: EditCarTypeComponent
     },
     {
       path: 'add-car-type',
+      canActivate: [AuthGuardService],
       component: EditCarTypeComponent
     },
     {
       path: 'car-type-list',
+      canActivate: [AuthGuardService],
       component: CarTypeListComponent
     },
     {
       path: 'order-list',
+      canActivate: [AuthGuardService],
       component: OrderListComponent
     },
     {
       path: 'cars-list-management',
+      canActivate: [AuthGuardService],
       component: CarsListManagementComponent
     },
     {
       path: 'users-list-management',
+      canActivate: [AuthGuardService],
       component: UsersListManagementComponent
     },
     {
       path: 'edit-user/:id',
+      canActivate: [AuthGuardService],
       component: EditUserComponent
     },
     {
       path: 'add-user',
+      canActivate: [AuthGuardService],
       component: EditUserComponent
     },
     {
       path: 'branches-list-management',
+      canActivate: [AuthGuardService],
       component: BranchesListManagementComponent
     },
     {
       path: 'edit-branch/:id',
+      canActivate: [AuthGuardService],
       component: EditBranchComponent
     },
     {
       path: 'add-branch',
+      canActivate: [AuthGuardService],
       component: EditBranchComponent
     }
   ]

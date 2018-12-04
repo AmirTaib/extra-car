@@ -100,7 +100,6 @@ export class CarListComponent implements OnInit {
   }
 
   updateFilter(event?) {
-
     console.log('in a func');
 
     this.temp = this.cars;
@@ -149,4 +148,10 @@ export class CarListComponent implements OnInit {
   }
 
 
+}
+
+
+export interface SatDatepickerRangeValue<D> {
+  begin: D | null;
+  end: D | null;
 }

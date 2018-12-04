@@ -154,6 +154,7 @@ mat-sidenav.sidebar-panel {
       @media ($mat-xsmall) {
         min-height: calc(100vh - #{$mat-toolbar-height-mobile-portrait});
       }
+      
       .mat-drawer-content > .ps.ps--theme_default {
         overflow: visible!important;
       }
@@ -323,4 +324,7 @@ mat-sidenav.sidebar-panel {
       }
     }
   }
+}
+.mat-drawer-content > .ps{
+  padding: 0rem!important;
 }

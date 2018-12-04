@@ -27,7 +27,8 @@ export class AuthGuardService implements CanActivate {
   }
 
   constructor(private router: Router) {
-    this.currentUser = JSON.parse(sessionStorage.getItem('current-user'));
+    this.currentUser = sessionStorage.getItem('current-user') ? JSON.parse(sessionStorage.getItem('current-user')) : '';
+
     if (this.currentUser) {
       this.currentUserName = new BehaviorSubject<string>(this.currentUser.userName);
     } else {
@@ -62,7 +63,10 @@ export class AuthGuardService implements CanActivate {
   }
 
   logout() {
-    this.currentUser = sessionStorage.setItem('current-user', '');
+    sessionStorage.setItem('current-user', '');
+    this.currentUserName = new BehaviorSubject<string>('');
+    this.currentUser = '';
+    this.router.navigate(['/']);
   }
 
 }

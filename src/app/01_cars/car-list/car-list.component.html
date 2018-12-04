@@ -1,4 +1,19 @@
 <div *ngIf="temp">
+  <!-- 
+     <mat-form-field  class="example-full-width" style="width: 20%" class="mb-1">
+        <input matInput [min]="minStartDate" [matDatepicker]="picker1" placeholder="Choose a start date" [(ngModel)]="startRentDay">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+
+      </mat-form-field> 
+      <br/> -->
+
+  <mat-form-field>
+    <input matInput [min]="minStartDate" placeholder="Choose a date" [satDatepicker]="picker" [value]="date">
+    <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+  </mat-form-field>
+
 
   <mat-form-field style="width: 20%" class="mb-1">
     <mat-select placeholder="Category" [(value)]="selected">
@@ -7,27 +22,14 @@
       <mat-option value="Year">Year</mat-option>
       <mat-option value="Manufacture Name">Manufacture Name</mat-option>
       <mat-option value="Model">Model</mat-option>
-      
+
 
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field  class="example-full-width" style="margin-left: 30%">
-      <input matInput [min]="minStartDate" [matDatepicker]="picker1" placeholder="Choose a start date" [(ngModel)]="startRentDay">
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  
-    <mat-form-field  class="example-full-width">
-      <input matInput [min]="minStartDate" [matDatepicker]="picker2" placeholder="Choose a end date" [(ngModel)]="endRentDay" (dateChange)='getFreeCarsByDays()'>
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
 
-  <br/>
 
+  <br />
 
   <mat-form-field class="example-full-width" style="width: 20%" class="mb-1" *ngIf="selected=='Year'">
     <mat-select placeholder="Manufacture Year" [(ngModel)]="selectedYear">
@@ -62,8 +64,9 @@
     <mat-radio-button value="false">Manual Gear</mat-radio-button>
   </mat-radio-group>
 
-  
-<!--  
+
+
+  <!--  
  <pre>startRentDay: {{startRentDay | json}}</pre>
  <pre>endRentDay: {{endRentDay | json}}</pre>
   

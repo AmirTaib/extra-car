@@ -9,15 +9,16 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-
-  isLogin = true;
+  showConfirmBox: boolean;
+  // isLogin = true;
   currentUserName: string;
-
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleNotificationSidenav = new EventEmitter<void>();
 
   constructor(private router: Router, private auteGuardService: AuthGuardService) {
+    
     this.auteGuardService.currentUserName.subscribe(userName => {
+
       this.currentUserName = userName;
     });
   }
@@ -37,8 +38,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.currentUserName = '';
-    this.auteGuardService.logout();
+    this.showConfirmBox = confirm('Are you sure you want to logout?');
+    if (this.showConfirmBox) {
+      this.auteGuardService.logout();
+      this.auteGuardService.currentUserName.subscribe(userName => {
+        this.currentUserName = userName;
+      });
+    }
   }
 
 }

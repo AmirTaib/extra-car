@@ -20,7 +20,10 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { CalendarModule, CalendarDateFormatter } from 'angular-calendar';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter'
+
+import { CalendarModule } from 'angular-calendar';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -38,6 +41,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { BranchDetailsComponent } from './branch-details/branch-details.component';
+
+import { from } from 'rxjs';
 @NgModule({
   imports: [
     CommonModule,
@@ -68,15 +73,24 @@ import { BranchDetailsComponent } from './branch-details/branch-details.componen
     ChartsModule,
     PerfectScrollbarModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SatDatepickerModule,
+    SatNativeDateModule,
+    MatDatepickerModule
   ],
   declarations: [
     BranchesComponent,
     CarListComponent,
     RentCalculationComponent,
     CarDetailsComponent,
-    BranchDetailsComponent
-  ]
+    BranchDetailsComponent,
+    //NgbdDatepickerRange
+
+  ],
+  providers: [
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+],
 })
 
 export class CarsModule { }
